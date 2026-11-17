@@ -102,12 +102,23 @@
         const tdAcoes = document.createElement("td");  
         const acoes = document.createElement("div");  
         acoes.className = "acoes-registro";  
+
+        // Botão Jogar direto do banco
+        acoes.appendChild(botao("Jogar", "botao-pequeno", function () {  
+            const dadosJogador = JSON.stringify(jogador);
+            localStorage.setItem("jogadorAtual", dadosJogador);
+            localStorage.setItem("astronauta", dadosJogador);
+            window.location.href = "http://127.0.0.1:5500/game/pato.html";
+        }, "Jogar com " + jogador.nickname));  
+
         acoes.appendChild(botao("Editar", "botao-pequeno botao-neutro", function () {  
             iniciarEdicao(jogador);  
         }, "Editar " + jogador.nickname));  
+
         acoes.appendChild(botao("Excluir", "botao-pequeno botao-perigo", function () {  
             excluirJogador(jogador);  
         }, "Excluir " + jogador.nickname));  
+
         tdAcoes.appendChild(acoes);  
         linha.appendChild(tdAcoes);  
         lista.appendChild(linha);  

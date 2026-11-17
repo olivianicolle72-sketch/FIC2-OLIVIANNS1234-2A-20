@@ -28,6 +28,7 @@ const imagemSteven = document.getElementById("steven-imagem");
 const imagensAstronauta = {
 Feminino: "/img%20Jogo/person/astroF.png",
 Neutro: "/img%20Jogo/person/astroGN.png",
+"Genero Neutro": "/img%20Jogo/person/astroGN.png",
 Masculino: "/img%20Jogo/person/AstroM.png"
 };
 
@@ -104,7 +105,8 @@ if (!jogador) {
     return false;  
 }  
 
-const imagem = imagensAstronauta[jogador.genero];  
+const generoChave = jogador.genero || "Neutro";
+const imagem = imagensAstronauta[generoChave] || imagensAstronauta["Neutro"];  
 
 if (!imagem) {  
     alert("O gênero cadastrado não possui uma imagem correspondente.");  
@@ -119,7 +121,7 @@ personagem.onerror = function () {
 };  
 
 personagem.src = imagem;  
-personagem.alt = "Astronauta de " + jogador.genero;  
+personagem.alt = "Astronauta de " + generoChave;  
 
 if (imagemSteven) {  
     imagemSteven.onerror = function () {  
@@ -129,7 +131,6 @@ if (imagemSteven) {
 }  
 
 return true;
-
 }
 
 function atualizarVidas() {
@@ -144,7 +145,6 @@ if (elementoVidas) {
     const textoVidas = vidas === 1 ? " vida restante" : " vidas restantes";  
     elementoVidas.setAttribute("aria-label", vidas + textoVidas);  
 }
-
 }
 
 function atualizarScore(pontos) {
@@ -416,7 +416,6 @@ if (vidas <= 0) {
     jogoAtivo = false;  
     pararMovimento();  
 
-    // Salva a pontuação máxima no Supabase
     salvarScoreNoSupabase();
 
     temporizadorImpacto = setTimeout(function () {  
@@ -623,7 +622,6 @@ pararMovimento();
 
     prepararPersonagem();  
 } else {  
-    // Ajustado para o nome do seu arquivo HTML principal/CRUD
     window.location.href = "http://127.0.0.1:5500/crud/crud.html";  
 }
 });
