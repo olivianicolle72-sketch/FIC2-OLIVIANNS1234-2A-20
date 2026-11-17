@@ -5,6 +5,6 @@
  * NUNCA utilize service_role no navegador.
  */
 window.SUPABASE_CONFIG = {
-    url: "https://wxjigtjbjtjebfhnegjv.supabase.co",
-    anonKey: "sb_publishable_N1nB3US_mQKJNolDpee9XA_cwn7QmMu"
+  url: "https://wxjigtjbjtjebfhnegjv.supabase.co",
+  anonKey: "sb_publishable_N1nB3US_mQKJNolDpee9XA_cwn7QmMu"
 };
